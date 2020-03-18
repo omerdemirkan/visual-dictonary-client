@@ -12,15 +12,28 @@ export default function Header() {
 
         <ul className={classes.NavList}>
             <li>
-                <NavLink to='/' exact>home</NavLink>
+                <NavLink to='/' exact activeClassName={classes.ActiveLink}>
+                    home
+                    
+                    {/* Spans within NavLinks serve as underline styling. */}
+                    <span className='accented-section'></span>
+                </NavLink>
             </li>
 
             <li>
-                <NavLink to='/search'>search</NavLink>
+                <NavLink to='/search' activeClassName={classes.ActiveLink}>
+                    search
+                    <span className='accented-section'></span>
+            
+                </NavLink>
             </li>
 
             <li>
-                <NavLink to='/about'>about</NavLink>
+                <NavLink to='/about' activeClassName={classes.ActiveLink}>
+                    about
+                    <span className='accented-section'></span>
+                    
+                </NavLink>
             </li>
 
             <li>

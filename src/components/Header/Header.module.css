@@ -26,4 +26,17 @@
 .NavList a {
     color: inherit;
     text-decoration: none;
+    position: relative;
+}
+
+.ActiveLink {
+    font-weight: 500;
+}
+
+.ActiveLink span {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -5px;
+    left: 0;
 }
