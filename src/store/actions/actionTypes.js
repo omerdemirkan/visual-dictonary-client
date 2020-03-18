@@ -1,0 +1,1 @@
+export const UPDATE_SEARCH_TEXT = 'UPDATE_SEARCH_TEXT';

@@ -15,7 +15,7 @@ const materialTheme = createMuiTheme({
     }
 });
 
-export default function TextInput({label, onChange, onSubmit}) {
+export default function TextInput({label, onChange, onSubmit, disableSubmit}) {
     return <ThemeProvider theme={materialTheme}>
         <div className={classes.TextInput}>
         
@@ -27,7 +27,7 @@ export default function TextInput({label, onChange, onSubmit}) {
             />
             <h3>{label}</h3>
             {onSubmit ? 
-                <button className={classes.SearchButton} onClick={onSubmit}>
+                <button className={classes.SearchButton} onClick={onSubmit} disabled={disableSubmit}>
                     <SearchIcon/>
                 </button>
             :
