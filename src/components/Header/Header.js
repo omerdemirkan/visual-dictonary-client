@@ -1,11 +1,29 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import classes from './Header.module.css';
 
 import { NavLink } from 'react-router-dom';
 
 export default function Header() {
-    return <div className={classes.Header}>
 
+    const [minimizeHeader, setMinimizeHeader] = useState(false);
+
+    const headerRef = useRef();
+    headerRef.current = minimizeHeader;
+
+    useEffect(() => {
+        const handleScroll = () => {
+          const show = window.scrollY > 70
+          if (headerRef.current !== show) {
+            setMinimizeHeader(show)
+          }
+        }
+        document.addEventListener('scroll', handleScroll)
+        return () => {
+          document.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
+    return <div className={classes.Header} style={minimizeHeader ? {height: '60px', backgroundColor: 'rgb(248, 248, 248)'} : null}>
         <span className={classes.Logo}>
             <NavLink to='/'>
                 <span className='accented-text'>.</span>konsappt

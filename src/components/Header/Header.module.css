@@ -1,6 +1,7 @@
 .Header {
-    height: 100px;
+    height: 80px;
     width: 100vw;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -8,6 +9,8 @@
     position: fixed;
     left: 0;
     top: 0;
+
+    transition: height 0.2s ease, background-color 0.2s ease;
 }
 
 .Logo {
