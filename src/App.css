@@ -1,5 +1,6 @@
 .App {
   color: #353535;
+  padding-top: 60px;
 } 
 
 * {
@@ -22,27 +23,33 @@ a {
 
 
 .accented-text {
-  color: #11A689;
+  color: #00BFBF;
 }
 
 .accented-section {
-  background-color: #11A689;
+  background-color: #00BFBF;
   color: white;
 }
 
 .primary-button {
   border: none;
-  background-color: #11A689;
+  background-color: #00BFBF;
   color: white;
   width: 85px;
   height: 30px;
 }
 
 .secondary-button {
-  border: 1px solid #11A689;
-  color: #11A689;
+  border: 1px solid #00BFBF;
+  color: #00BFBF;
 
   background-color: transparent;
   width: 85px;
   height: 30px;
+}
+
+.page {
+  padding: 15vh 5vw;
+  height: calc(100vh - 60px);
+  box-sizing: border-box;
 }
