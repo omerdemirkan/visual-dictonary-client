@@ -12,7 +12,7 @@ import searchVideoAsync from '../../store/actions/searchVideoAsync';
 
 function Search(props) {
     return <>
-        <div className={classes.Search} style={props.video ? {height: '30vh', transition: 'height 0.5s ease'} : null}>
+        <div className={classes.SearchSection} style={props.lastSearchedWord ? {height: '30vh', transition: 'height 0.5s ease'} : null}>
             <div className={classes.SearchBox}>
                 <TextInput
                 label='search for the konsappt'
@@ -20,6 +20,7 @@ function Search(props) {
                 value={props.text}
                 onChange={props.onUpdateText}
                 onSubmit={() => props.onSearchVideo(props.text)}
+                disableSubmit={props.text.length < 3}
                 />
 
                 {props.loading ? 
@@ -30,6 +31,14 @@ function Search(props) {
                 
             </div>
         </div>
+
+        {props.lastSearchedWord ?
+        
+            <div className={classes.ResultsSection}>
+                <h2>Results for <span className='accented-text'>{props.lastSearchedWord}</span></h2>
+                <iframe title='main' width="560" height="315" src={`https://www.youtube.com/embed/${props.video.id}?start=${props.video.start}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        : null}
     </>
 }
 
@@ -37,7 +46,8 @@ const mapStateToProps = state => {
     return {
         text: state.search.text,
         video: state.search.video,
-        loading: state.search.loading
+        loading: state.search.loading,
+        lastSearchedWord: state.search.lastSearchedWord
     }
 }
 

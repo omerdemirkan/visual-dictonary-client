@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     text: '',
     loading: false,
-    video: null
+    video: null,
+    lastSearchedWord: null
 }
 
 const searchReducer = (state = initialState, action) => {
@@ -22,7 +23,8 @@ const searchReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                video: action.video
+                video: action.video,
+                lastSearchedWord: action.word
             }
         default:
             return state;

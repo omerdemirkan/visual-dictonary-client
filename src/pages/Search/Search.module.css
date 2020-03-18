@@ -1,4 +1,4 @@
-.Search {
+.SearchSection {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,4 +19,20 @@
     position: absolute;
     bottom: 10%;
     left: 0;
+}
+
+.ResultsSection {
+    opacity: 0;
+    animation: FadeIn 0.2s ease forwards;
+    animation-delay: 0.5s;
+    text-align: center;
+}
+
+@keyframes FadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

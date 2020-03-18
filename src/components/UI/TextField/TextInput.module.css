@@ -47,6 +47,10 @@
     transition: border-color 0.2s ease, color 0.2s ease;
 }
 
+.SearchButton:disabled {
+    cursor: not-allowed;
+}
+
 .Input:hover ~ .SearchButton {
     border-color: black;
     color: rgb(41, 41, 41);
