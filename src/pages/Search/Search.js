@@ -32,11 +32,11 @@ function Search(props) {
             </div>
         </div>
 
-        {props.lastSearchedWord ?
+        {props.lastSearchedWord && props.video ?
         
             <div className={classes.ResultsSection}>
                 <h2>Results for <span className='accented-text'>{props.lastSearchedWord}</span></h2>
-                <iframe title='main' width="560" height="315" src={`https://www.youtube.com/embed/${props.video.id}?start=${props.video.start}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe title='main' width="560" height="315" src={`https://www.youtube-nocookie.com/embed/${props.video.id}?start=${props.video.start}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         : null}
     </>

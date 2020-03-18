@@ -22,7 +22,9 @@ a {
 
 
 
-
+.main {
+  height: calc(100vh - 60px);
+}
 
 .accented-text {
   color: #00BFBF;
@@ -59,10 +61,4 @@ a {
 .secondary-button:hover {
   color: rgb(0, 153, 153);
   border-color: rgb(0, 153, 153);
-}
-
-.page {
-  padding: 8vh 5vw;
-  height: calc(100vh - 60px);
-  box-sizing: border-box;
 }

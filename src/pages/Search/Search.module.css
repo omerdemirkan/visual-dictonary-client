@@ -22,10 +22,21 @@
 }
 
 .ResultsSection {
+    text-align: center;
+}
+
+.ResultsSection h2 {
     opacity: 0;
     animation: FadeIn 0.2s ease forwards;
     animation-delay: 0.5s;
-    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.ResultsSection iframe {
+    opacity: 0;
+    animation: FadeIn 0.2s ease forwards;
+    animation-delay: 0.8s;
 }
 
 @keyframes FadeIn {
