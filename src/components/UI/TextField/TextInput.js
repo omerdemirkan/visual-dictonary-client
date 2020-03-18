@@ -4,19 +4,10 @@ import classes from './TextInput.module.css';
 // Material UI
 import SearchIcon from '@material-ui/icons/Search';
 import Input from '@material-ui/core/Input';
-import { ThemeProvider } from '@material-ui/core/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
-
-const materialTheme = createMuiTheme({
-    palette: {
-        primary: {
-            500: '#00BFBF'
-        }
-    }
-});
+import ThemeProvider from '../ThemeProvider/ThemeProvider';
 
 export default function TextInput({label, value, onChange, onSubmit, disableSubmit}) {
-    return <ThemeProvider theme={materialTheme}>
+    return <ThemeProvider>
         <div className={classes.TextInput}>
             <Input 
             className={classes.Input} 

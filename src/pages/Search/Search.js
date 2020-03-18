@@ -3,6 +3,8 @@ import classes from './Search.module.css';
 
 import TextInput from '../../components/UI/TextField/TextInput';
 
+import Spinner from '../../components/UI/Spinner/Spinner';
+
 // Redux
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
@@ -19,6 +21,13 @@ function Search(props) {
                 onChange={props.onUpdateText}
                 onSubmit={() => props.onSearchVideo(props.text)}
                 />
+
+                {props.loading ? 
+                    <div className={classes.SpinnerBox}>
+                        <Spinner/>
+                    </div>
+                : null}
+                
             </div>
         </div>
     </>
@@ -27,7 +36,8 @@ function Search(props) {
 const mapStateToProps = state => {
     return {
         text: state.search.text,
-        video: state.search.video
+        video: state.search.video,
+        loading: state.search.loading
     }
 }
 
