@@ -15,14 +15,14 @@ const materialTheme = createMuiTheme({
     }
 });
 
-export default function TextInput({label, onChange, onSubmit, disableSubmit}) {
+export default function TextInput({label, value, onChange, onSubmit, disableSubmit}) {
     return <ThemeProvider theme={materialTheme}>
         <div className={classes.TextInput}>
-        
             <Input 
             className={classes.Input} 
             label={label}
-            onChange={onChange}
+            value={value}
+            onChange={e => onChange(e.target.value)}
             autoFocus={true}
             />
             <h3>{label}</h3>

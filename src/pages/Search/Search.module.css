@@ -1,9 +1,11 @@
 .Search {
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
 }
 
 .SearchBox {
     width: 100%;
     max-width: 400px;
-    margin: auto;
 }

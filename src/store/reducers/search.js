@@ -13,6 +13,17 @@ const searchReducer = (state = initialState, action) => {
                 ...state,
                 text: action.text
             }
+        case actionTypes.SEARCH_VIDEO_START:
+            return {
+                ...state,
+                loading: true
+            }
+        case actionTypes.SEARCH_VIDEO_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                video: action.video
+            }
         default:
             return state;
     }

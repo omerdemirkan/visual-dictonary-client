@@ -55,4 +55,5 @@
 .Input:focus-within ~ .SearchButton {
     border-color: #00BFBF;
     color: #00BFBF;
+    caret-color: #00BFBF;
 }
