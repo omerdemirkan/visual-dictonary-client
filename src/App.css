@@ -1,3 +1,46 @@
 .App {
-  text-align: center;
+  color: #353535;
+} 
+
+* {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  user-select: none;
+}
+
+
+
+
+
+
+.accented-text {
+  color: #11A689;
+}
+
+.accented-section {
+  background-color: #11A689;
+  color: white;
+}
+
+.primary-button {
+  border: none;
+  background-color: #11A689;
+  color: white;
+  width: 85px;
+  height: 30px;
+}
+
+.secondary-button {
+  border: 1px solid #11A689;
+  color: #11A689;
+
+  background-color: transparent;
+  width: 85px;
+  height: 30px;
 }
