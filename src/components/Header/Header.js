@@ -7,14 +7,16 @@ export default function Header() {
     return <div className={classes.Header}>
 
         <span className={classes.Logo}>
-            <span className='accented-text'>.</span>konsappt
+            <NavLink to='/'>
+                <span className='accented-text'>.</span>konsappt
+            </NavLink>
         </span>
 
         <ul className={classes.NavList}>
             <li>
                 <NavLink to='/' exact activeClassName={classes.ActiveLink}>
                     home
-                    
+
                     {/* Spans within NavLinks serve as underline styling. */}
                     <span className='accented-section'></span>
                 </NavLink>
