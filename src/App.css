@@ -10,6 +10,7 @@
 
 button {
   cursor: pointer;
+  font-family: 'Muli', sans-serif;
 }
 
 a {
@@ -36,8 +37,8 @@ a {
   border: none;
   background-color: #00BFBF;
   color: white;
-  width: 85px;
-  height: 30px;
+  padding: 8px 20px;
+  border-radius: 2px;
 }
 
 .secondary-button {
@@ -45,8 +46,8 @@ a {
   color: #00BFBF;
 
   background-color: transparent;
-  width: 85px;
-  height: 30px;
+  padding: 8px 20px;
+  border-radius: 2px;
 }
 
 .page {

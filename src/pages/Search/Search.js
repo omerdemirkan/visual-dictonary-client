@@ -7,8 +7,9 @@ export default function Search() {
     return <div className='page'>
         <div className={classes.SearchBox}>
             <TextInput
-            label='Search'
+            label='search for the konsappt'
             variant='filled'
+            onSubmit={() => {}}
             />
         </div>
     </div>

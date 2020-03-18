@@ -2,7 +2,8 @@ import React from 'react';
 import classes from './TextInput.module.css';
 
 // Material UI
-import TextField from '@material-ui/core/TextField';
+import SearchIcon from '@material-ui/icons/Search';
+import Input from '@material-ui/core/Input';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
@@ -14,15 +15,24 @@ const materialTheme = createMuiTheme({
     }
 });
 
-export default function TextInput({label, onChange}) {
-    return <div>
-        <ThemeProvider theme={materialTheme}>
-            <TextField 
+export default function TextInput({label, onChange, onSubmit}) {
+    return <ThemeProvider theme={materialTheme}>
+        <div className={classes.TextInput}>
+        
+            <Input 
             className={classes.Input} 
             label={label}
-            style={{margin: '15px 0'}}
             onChange={onChange}
+            autoFocus={true}
             />
-        </ThemeProvider>
-    </div>
+            <h3>{label}</h3>
+            {onSubmit ? 
+                <button className={classes.SearchButton} onClick={onSubmit}>
+                    <SearchIcon/>
+                </button>
+            :
+                null
+            }
+        </div>
+    </ThemeProvider>
 }
