@@ -1,6 +1,7 @@
 .App {
   color: #353535;
   padding-top: 60px;
+  font-family: 'Muli', sans-serif;
 } 
 
 * {
@@ -49,7 +50,7 @@ a {
 }
 
 .page {
-  padding: 15vh 5vw;
+  padding: 8vh 5vw;
   height: calc(100vh - 60px);
   box-sizing: border-box;
 }
