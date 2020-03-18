@@ -6,12 +6,17 @@ export default word => {
 
         // To Imitate api calls
         setTimeout(() => {
-            const video = {
-                id: 'c7cYON3uVZo',
-                startTime: '00:00:05.942',
-                endTime: '00:00:10.475'
+            if (Math.random() > .5) {
+                const video = {
+                    id: 'c7cYON3uVZo',
+                    startTime: '00:00:05.942',
+                    endTime: '00:00:10.475'
+                }
+                dispatch(searchVideoSuccess(video, word))
+            } else {
+                dispatch(searchVideoFailure(word));
             }
-            dispatch(searchVideoSuccess(video, word))
+            
         }, 1000);
     }
 }
@@ -25,6 +30,6 @@ const searchVideoSuccess = (video, word) => {
     return {type: actionTypes.SEARCH_VIDEO_SUCCESS, video, word};
 }
 
-const searchVideoFailure = () => {
-    return {type: actionTypes.SEARCH_VIDEO_FAILURE};
+const searchVideoFailure = word => {
+    return {type: actionTypes.SEARCH_VIDEO_FAILURE, word};
 }

@@ -1,9 +1,11 @@
 import React from 'react';
 import classes from './Search.module.css';
 
-import TextInput from '../../components/UI/TextField/TextInput';
 
+// UI
+import TextInput from '../../components/UI/TextField/TextInput';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import lost from '../../images/lost.svg'
 
 // Redux
 import { connect } from 'react-redux';
@@ -11,8 +13,11 @@ import * as actionTypes from '../../store/actions/actionTypes';
 import searchVideoAsync from '../../store/actions/searchVideoAsync';
 
 function Search(props) {
+
+    let resultSection = null;
+
     return <>
-        <div className={classes.SearchSection} style={props.lastSearchedWord ? {height: '30vh', transition: 'height 0.5s ease'} : null}>
+        <div className={classes.SearchSection} style={props.submitButtonClicked ? {height: '30vh', transition: 'height 0.3s ease'} : null}>
             <div className={classes.SearchBox}>
                 <TextInput
                 label='search for the konsappt'
@@ -22,21 +27,28 @@ function Search(props) {
                 onSubmit={() => props.onSearchVideo(props.text)}
                 disableSubmit={props.text.length < 3}
                 />
-
-                {props.loading ? 
-                    <div className={classes.SpinnerBox}>
-                        <Spinner/>
-                    </div>
-                : null}
                 
             </div>
         </div>
 
-        {props.lastSearchedWord && props.video ?
+        {props.loading ? 
+            <div className={classes.SpinnerBox}>
+                <Spinner/>
+            </div>
+        : null}
+
+        {props.lastSearchSuccessful && !props.loading ?
         
             <div className={classes.ResultsSection}>
                 <h2>Results for <span className='accented-text'>{props.lastSearchedWord}</span></h2>
                 <iframe title='main' width="560" height="315" src={`https://www.youtube-nocookie.com/embed/${props.video.id}?start=${props.video.start}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        : null}
+
+        {props.lastSearchSuccessful === false && !props.loading ?
+            <div className={classes.ResultsSection}>
+                <h2>Hmm, I can't find a video for <span className='accented-text'>{props.lastSearchedWord}</span></h2>
+                <img src={lost} alt='lost'/>
             </div>
         : null}
     </>
@@ -47,7 +59,9 @@ const mapStateToProps = state => {
         text: state.search.text,
         video: state.search.video,
         loading: state.search.loading,
-        lastSearchedWord: state.search.lastSearchedWord
+        lastSearchedWord: state.search.lastSearchedWord,
+        lastSearchSuccessful: state.search.lastSearchSuccessful,
+        submitButtonClicked: state.search.submitButtonClicked
     }
 }
 

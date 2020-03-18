@@ -2,9 +2,11 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     text: '',
+    submitButtonClicked: false,
     loading: false,
     video: null,
-    lastSearchedWord: null
+    lastSearchedWord: null,
+    lastSearchSuccessful: null
 }
 
 const searchReducer = (state = initialState, action) => {
@@ -17,14 +19,24 @@ const searchReducer = (state = initialState, action) => {
         case actionTypes.SEARCH_VIDEO_START:
             return {
                 ...state,
-                loading: true
+                loading: true,
+                submitButtonClicked: true
             }
         case actionTypes.SEARCH_VIDEO_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 video: action.video,
-                lastSearchedWord: action.word
+                lastSearchedWord: action.word,
+                lastSearchSuccessful: true
+            }
+        case actionTypes.SEARCH_VIDEO_FAILURE:
+            return {
+                ...state,
+                video: null,
+                loading: false,
+                lastSearchedWord: action.word,
+                lastSearchSuccessful: false
             }
         default:
             return state;
