@@ -23,7 +23,7 @@ export default function Header() {
         }
     }, [])
 
-    return <div className={classes.Header} style={minimizeHeader ? {height: '60px', backgroundColor: 'rgb(248, 248, 248)'} : null}>
+    return <div className={classes.Header} style={minimizeHeader ? {height: '60px', backgroundColor: 'rgb(248, 248, 248)', borderColor: 'rgb(220, 243, 243)'} : null}>
         <span className={classes.Logo}>
             <NavLink to='/'>
                 <span className='accented-text'>.</span>konsappt

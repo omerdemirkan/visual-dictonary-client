@@ -14,17 +14,15 @@ import searchVideoAsync from '../../store/actions/searchVideoAsync';
 
 function Search(props) {
 
-    let resultSection = null;
-
     return <>
         <div className={classes.SearchSection} style={props.submitButtonClicked ? {height: '30vh', transition: 'height 0.3s ease'} : null}>
             <div className={classes.SearchBox}>
                 <TextInput
-                label='search for the konsappt'
+                label='Search for the konsappt'
                 variant='filled'
                 value={props.text}
                 onChange={props.onUpdateText}
-                onSubmit={() => props.onSearchVideo(props.text)}
+                onSubmit={() => {props.onSearchVideo(props.text); window.scrollTo(0, 0);}}
                 disableSubmit={props.text.length < 3}
                 />
                 
