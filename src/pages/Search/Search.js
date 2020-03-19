@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from './Search.module.css';
 
+//Routing
+import { useLocation } from 'react-router-dom';
 
 // UI
 import TextInput from '../../components/UI/TextField/TextInput';
@@ -13,7 +15,28 @@ import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
 import searchVideoAsync from '../../store/actions/searchVideoAsync';
 
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
+
 function Search(props) {
+    
+    // To read url search params
+    const query = useQuery();
+
+    useEffect(() => {
+        const searchedWord = query.get('word');
+        if (searchedWord) {
+            props.onUpdateText(searchedWord);
+            props.onSearchVideo(searchedWord);
+        }
+    }, []);
+
+    function submitButtonClickedHandler() {
+        window.scrollTo(0, 0);
+        props.history.push(props.history.location.pathname + `?word=${props.text}`);
+        props.onSearchVideo(props.text);
+    }
 
     return <>
         <ScrollUpOnMount/>
@@ -24,7 +47,7 @@ function Search(props) {
                 variant='filled'
                 value={props.text}
                 onChange={props.onUpdateText}
-                onSubmit={() => {props.onSearchVideo(props.text); window.scrollTo(0, 0);}}
+                onSubmit={submitButtonClickedHandler}
                 disableSubmit={props.text.length === 0 || props.loading}
                 />
             </div>
