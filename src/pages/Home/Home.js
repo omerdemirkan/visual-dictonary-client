@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Home.module.css';
+import ScrollUpOnMount from '../../components/ScrollUpOnMount/SrollUpOnMount';
 
 import {Link} from 'react-router-dom';
 
@@ -8,6 +9,7 @@ import hiker from '../../images/hiker.svg';
 
 export default function Home() {
     return <div className={classes.Home}>
+        <ScrollUpOnMount/>
         <div className={classes.HeroSection}>
             <span className={classes.HeroTextSection}>
                 <h1>find the <span className='accented-text'>konsappt</span></h1>

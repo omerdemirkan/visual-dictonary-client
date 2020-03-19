@@ -5,6 +5,7 @@ import classes from './Search.module.css';
 // UI
 import TextInput from '../../components/UI/TextField/TextInput';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import ScrollUpOnMount from '../../components/ScrollUpOnMount/SrollUpOnMount';
 import lost from '../../images/lost.svg'
 
 // Redux
@@ -15,6 +16,7 @@ import searchVideoAsync from '../../store/actions/searchVideoAsync';
 function Search(props) {
 
     return <>
+        <ScrollUpOnMount/>
         <div className={classes.SearchSection} style={props.submitButtonClicked ? {height: '30vh', transition: 'height 0.3s ease'} : null}>
             <div className={classes.SearchBox}>
                 <TextInput
