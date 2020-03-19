@@ -23,7 +23,7 @@ export default function Header() {
         }
     }, [])
 
-    return <div className={classes.Header} style={minimizeHeader ? {height: '60px', backgroundColor: 'rgb(248, 248, 248)', borderColor: 'rgb(220, 243, 243)'} : null}>
+    return <div className={classes.Header} style={minimizeHeader ? {height: '60px', backgroundColor: 'rgb(248, 248, 248)', borderColor: 'rgb(195, 214, 214)'} : null}>
         <span className={classes.Logo}>
             <NavLink to='/'>
                 <span className='accented-text'>.</span>konsappt
@@ -36,14 +36,14 @@ export default function Header() {
                     home
 
                     {/* Spans within NavLinks serve as underline styling. */}
-                    <span className='accented-section'></span>
+                    <span></span>
                 </NavLink>
             </li>
 
             <li>
                 <NavLink to='/search' activeClassName={classes.ActiveLink}>
                     search
-                    <span className='accented-section'></span>
+                    <span></span>
             
                 </NavLink>
             </li>
@@ -51,7 +51,7 @@ export default function Header() {
             <li>
                 <NavLink to='/about' activeClassName={classes.ActiveLink}>
                     about
-                    <span className='accented-section'></span>
+                    <span></span>
                     
                 </NavLink>
             </li>

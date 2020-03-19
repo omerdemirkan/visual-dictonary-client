@@ -2,6 +2,7 @@
   color: #353535;
   padding-top: 60px;
   font-family: 'Muli', sans-serif;
+  overflow-x: hidden;
 } 
 
 * {
@@ -24,7 +25,7 @@ a {
 
 
 .main {
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
 }
 
 .accented-text {
@@ -62,4 +63,9 @@ a {
 .secondary-button:hover {
   color: rgb(0, 153, 153);
   border-color: rgb(0, 153, 153);
+}
+
+button.large {
+  padding: 12px 40px;
+  font-size: 1.1rem;
 }
