@@ -1,5 +1,32 @@
+:root {
+  --background: white;
+  --background-accent: rgb(248, 248, 248);
+  --primary: #353535;
+  --secondary: #838383;
+  --accent: #00BFBF;
+  --dark-accent: rgb(0, 170, 170);
+}
+
+.dark-mode {
+  --background: #353535;
+  --background-accent: #3d3d3d;
+  --primary: #d3d3d3;
+  --secondary: #838383;
+  --accent: #00BFBF;
+  --dark-accent: rgb(0, 170, 170);
+}
+
+input, select, textarea{
+  color: var(--primary);
+}
+
+textarea:focus, input:focus {
+  color: var(--primary);
+}
+
 .App {
-  color: #353535;
+  color: var(--primary);
+  background-color: var(--background);
   padding-top: 60px;
   font-family: 'Muli', sans-serif;
   overflow-x: hidden;
@@ -29,18 +56,18 @@ a {
 }
 
 .accented-text {
-  color: #00BFBF;
+  color: var(--accent);
 }
 
 .accented-section {
-  background-color: #00BFBF;
-  color: white;
+  background-color: var(--accent);
+  color: var(--background);
 }
 
 .primary-button {
   border: none;
-  background-color: #00BFBF;
-  color: white;
+  background-color: var(--accent);
+  color: var(--background);
   padding: 8px 20px;
   border-radius: 2px;
 
@@ -48,12 +75,12 @@ a {
 }
 
 .primary-button:hover {
-  background-color: rgb(0, 170, 170);
+  background-color: var(--dark-accent);
 }
 
 .secondary-button {
-  border: 1px solid #00BFBF;
-  color: #00BFBF;
+  border: 1px solid var(--accent);
+  color: var(--accent);
 
   background-color: transparent;
   padding: 8px 20px;
@@ -61,8 +88,8 @@ a {
 }
 
 .secondary-button:hover {
-  color: rgb(0, 153, 153);
-  border-color: rgb(0, 153, 153);
+  color: var(--dark-accent);
+  border-color: var(--dark-accent);
 }
 
 button.large {
