@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import stringToSeconds from '../../utils/stringToSeconds';
 
 export default word => {
     return dispatch => {
@@ -9,8 +10,8 @@ export default word => {
             if (Math.random() > .5) {
                 const video = {
                     id: 'c7cYON3uVZo',
-                    startTime: '00:00:05.942',
-                    endTime: '00:00:10.475'
+                    start: stringToSeconds('00:00:05.942', false),
+                    end: stringToSeconds('00:00:10.475', true)
                 }
                 dispatch(searchVideoSuccess(video, word))
             } else {
