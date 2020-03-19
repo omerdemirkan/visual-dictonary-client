@@ -4,7 +4,9 @@ const initialState = {
     text: '',
     submitButtonClicked: false,
     loading: false,
-    video: null,
+    videos: [],
+    inspectedVideoIndex: null,
+    inspectedVideo: null,
     lastSearchedWord: null,
     lastSearchSuccessful: null
 }
@@ -26,14 +28,16 @@ const searchReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                video: action.video,
+                videos: action.videos,
+                inspectedVideoIndex: 0,
+                inspectedVideo: action.videos[0],
                 lastSearchedWord: action.word,
                 lastSearchSuccessful: true
             }
         case actionTypes.SEARCH_VIDEO_FAILURE:
             return {
                 ...state,
-                video: null,
+                videos: [],
                 loading: false,
                 lastSearchedWord: action.word,
                 lastSearchSuccessful: false

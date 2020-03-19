@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 import TextInput from '../../components/UI/TextField/TextInput';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ScrollUpOnMount from '../../components/ScrollUpOnMount/SrollUpOnMount';
-import lost from '../../images/lost.svg'
+import lost from '../../images/lost.svg';
 
 // Redux
 import { connect } from 'react-redux';
@@ -79,7 +79,7 @@ function Search(props) {
 const mapStateToProps = state => {
     return {
         text: state.search.text,
-        video: state.search.video,
+        video: state.search.inspectedVideo,
         loading: state.search.loading,
         lastSearchedWord: state.search.lastSearchedWord,
         lastSearchSuccessful: state.search.lastSearchSuccessful,

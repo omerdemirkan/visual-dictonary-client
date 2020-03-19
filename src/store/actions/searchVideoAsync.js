@@ -1,24 +1,36 @@
 import * as actionTypes from './actionTypes';
-import stringToSeconds from '../../utils/stringToSeconds';
+// import stringToSeconds from '../../utils/stringToSeconds';
+
+import axios from '../../axios';
 
 export default word => {
     return dispatch => {
         dispatch(searchVideoStart());
 
-        // To Imitate api calls
-        setTimeout(() => {
-            if (Math.random() > .5) {
-                const video = {
-                    id: 'c7cYON3uVZo',
-                    start: stringToSeconds('00:00:05.942', false),
-                    end: stringToSeconds('00:00:10.475', true)
+        axios.get('/captions?search=' + word)
+        .then(res => {
+            console.log(res.data);
+            const videos = res.data.map(video => {
+                return {
+                    id: video.videoId,
+                    start: Math.floor(video.start),
+                    end: Math.ceil(video.start + video.duration),
+                    sentence: video.captions
                 }
-                dispatch(searchVideoSuccess(video, word))
+            });
+
+            console.log(videos);
+
+            if (videos.length > 0) {
+                dispatch(searchVideoSuccess(videos, word));
             } else {
                 dispatch(searchVideoFailure(word));
             }
             
-        }, 1000);
+        })
+        .catch(err => {
+            dispatch(searchVideoFailure(word));
+        });
     }
 }
 
@@ -27,8 +39,8 @@ const searchVideoStart = () => {
     return {type: actionTypes.SEARCH_VIDEO_START};
 }
 
-const searchVideoSuccess = (video, word) => {
-    return {type: actionTypes.SEARCH_VIDEO_SUCCESS, video, word};
+const searchVideoSuccess = (videos, word) => {
+    return {type: actionTypes.SEARCH_VIDEO_SUCCESS, videos, word};
 }
 
 const searchVideoFailure = word => {
