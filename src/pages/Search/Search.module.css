@@ -48,6 +48,38 @@
     top: 10px;
 }
 
+.VideoBox {
+    width: 80vw;
+    height: 45vw;
+    max-width: 800px;
+    max-height: 450px;
+    margin: auto;
+    position: relative;
+    animation: FadeIn 0.4s ease forwards;
+}
+
+.VideoBox span {
+    cursor: pointer;
+    color: var(--secondary);
+    transition: color 0.1s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.VideoBox span:hover {
+    color: var(--primary);
+}
+
+.PreviousVideoButton {
+    left: calc(-5vw - 10px);
+}
+
+.NextVideoButton {
+    right: calc(-5vw - 10px);
+    
+}
+
 @keyframes FadeIn {
     from {
         top: 10px;

@@ -31,6 +31,8 @@ export default word => {
         .catch(err => {
             dispatch(searchVideoFailure(word));
         });
+
+        // dispatch(searchVideoSuccess([{id: 'arj7oStGLkU', start: 589, end: 592, sentence: 'and then miraculously find↵the unbelievable work ethic'}], word));
     }
 }
 
