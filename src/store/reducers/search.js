@@ -48,24 +48,6 @@ const searchReducer = (state = initialState, action) => {
                 lastSearchSuccessful: false
             }
 
-        case actionTypes.INCREMENT_INSPECTED_VIDEO:
-            
-            const incrementedIndex = state.inspectedVideoIndex < (state.videos.length - 1) ? state.inspectedVideoIndex + 1 : 0;
-            return {
-                ...state,
-                inspectedVideoIndex: incrementedIndex,
-                inspectedVideo: state.videos[incrementedIndex]
-            }
-
-        case actionTypes.DECREMENT_INSPECTED_VIDEO:
-            console.log(action);
-
-            const decrementedIndex = state.inspectedVideoIndex !== 0 ? state.inspectedVideoIndex - 1 : state.videos.length - 1;
-            return {
-                ...state,
-                inspectedVideoIndex: decrementedIndex,
-                inspectedVideo: state.videos[decrementedIndex]
-            }
         case actionTypes.SET_INSPECTED_VIDEO_INDEX:
             return {
                 ...state,

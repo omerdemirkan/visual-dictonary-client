@@ -24,6 +24,14 @@ function Result(props) {
         });
     }
 
+    function incrementVideo() {
+        props.onSetVideoIndex(props.videoIndex < (props.numVideos - 1) ? props.videoIndex + 1 : 0)
+    }
+
+    function decrementVideo() {
+        props.onSetVideoIndex(props.videoIndex > 0 ? props.videoIndex - 1 : (props.numVideos - 1))
+    }
+
     return <div className={classes.Result}>
         <h2>"{applyAccent(props.video.sentence, props.word, {color: 'var(--accent)', fontWeight: '700'})}"</h2>
         <div className={classes.VideoBox}>
@@ -47,11 +55,11 @@ function Result(props) {
                             onClick={node.clicked}></div>
                         })}
                     </div>
-                    <span className={classes.PreviousVideoButton} onClick={props.onDecrementVideo}>
+                    <span className={classes.PreviousVideoButton} onClick={decrementVideo}>
                         <ArrowBackIosRoundedIcon fontSize='large'/>
                     </span>
 
-                    <span className={classes.NextVideoButton} onClick={props.onIncrementVideo}>
+                    <span className={classes.NextVideoButton} onClick={incrementVideo}>
                         <ArrowForwardIosRoundedIcon fontSize='large'/>
                     </span>
                 </>
@@ -72,8 +80,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementVideo: () => dispatch({type: actionTypes.INCREMENT_INSPECTED_VIDEO}),
-        onDecrementVideo: () => dispatch({type: actionTypes.DECREMENT_INSPECTED_VIDEO}),
         onSetVideoIndex: index => dispatch({type: actionTypes.SET_INSPECTED_VIDEO_INDEX, index})
     }
 }
