@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 // import stringToSeconds from '../../utils/stringToSeconds';
+import decodeHtml from '../../utils/decodeHtml';
 
 import axios from '../../axios';
 
@@ -14,7 +15,7 @@ export default word => {
                     id: video.videoId,
                     start: Math.floor(video.start),
                     end: Math.ceil(video.start + video.duration),
-                    sentence: video.captions
+                    sentence: decodeHtml(video.captions)
                 }
             });
 
