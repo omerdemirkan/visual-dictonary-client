@@ -64,18 +64,15 @@ function Search(props) {
             </div>
         </div>
 
-        {props.loading ? 
-            <div className={classes.SpinnerBox}>
-                <Spinner/>
+        {props.lastSearchSuccessful === false ?
+            <div className={classes.NotFoundBox}>
+                <h2>Hmm, I can't find a video for <span className='accented-text'>{props.lastSearchedWord}</span></h2>
+                <img src={lost} alt='lost'/>
             </div>
-        : 
-            props.lastSearchSuccessful !== false ?
-                <Result/>
-            : 
-                <div className={classes.NotFoundBox}>
-                    <h2>Hmm, I can't find a video for <span className='accented-text'>{props.lastSearchedWord}</span></h2>
-                    <img src={lost} alt='lost'/>
-                </div>
+        :
+            <Result
+            loading={props.loading}
+            word={props.lastSearchedWord}/>
         }
     </>
 }

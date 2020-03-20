@@ -4,6 +4,7 @@ import classes from './Result.module.css';
 // UI
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
 import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounded';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
 //Utils
 import applyAccent from '../../../utils/applyAccent';
@@ -15,7 +16,11 @@ import * as actionTypes from '../../../store/actions/actionTypes';
 
 function Result(props) {
 
-    if (!props.video) {
+    if (props.loading === true) {
+        return <div className={classes.SpinnerBox}>
+            <Spinner/>
+        </div>
+    } else if (!props.video) {
         return null;
     }
 
@@ -39,7 +44,7 @@ function Result(props) {
     return <div className={classes.Result}>
         <h2>"{applyAccent(props.video.sentence, props.word, {color: 'var(--accent)', fontWeight: '700'})}"</h2>
         <div className={classes.VideoBox}>
-            <div style={{borderRadius: '15px', overflow: 'hidden', height: '100%'}}>
+            <div style={{borderRadius: '10px', overflow: 'hidden', height: '100%'}}>
                 <iframe 
                 title='main' 
                 width="100%" 
@@ -50,6 +55,7 @@ function Result(props) {
                 allowfullscreen></iframe>
             </div>
             
+            {/* Video Navigation Elements:  */}
             {props.numVideos > 1 ?
                 <>
                     <div className={classes.NodeBox}>
@@ -78,8 +84,7 @@ const mapStateToProps = state => {
     return {
         video: state.search.inspectedVideo,
         numVideos: state.search.videos.length,
-        videoIndex: state.search.inspectedVideoIndex,
-        word: state.search.lastSearchedWord
+        videoIndex: state.search.inspectedVideoIndex
     }
 }
 
