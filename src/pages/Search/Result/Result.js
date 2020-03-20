@@ -15,6 +15,10 @@ import * as actionTypes from '../../../store/actions/actionTypes';
 
 function Result(props) {
 
+    if (!props.video) {
+        return null;
+    }
+
     // Creates mappable array for nodes
     const nodeList = [];
     for (let i = 0; i < props.numVideos; i++) {
@@ -35,15 +39,16 @@ function Result(props) {
     return <div className={classes.Result}>
         <h2>"{applyAccent(props.video.sentence, props.word, {color: 'var(--accent)', fontWeight: '700'})}"</h2>
         <div className={classes.VideoBox}>
-
-            <iframe 
-            title='main' 
-            width="100%" 
-            height="100%" 
-            src={`https://www.youtube-nocookie.com/embed/${props.video.id}?start=${props.video.start}&end=${props.video.end}&autoplay=true`} 
-            frameborder="0" 
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen></iframe>
+            <div style={{borderRadius: '15px', overflow: 'hidden', height: '100%'}}>
+                <iframe 
+                title='main' 
+                width="100%" 
+                height="100%" 
+                src={`https://www.youtube-nocookie.com/embed/${props.video.id}?controls=0&start=${props.video.start}&end=${props.video.end}&autoplay=true`} 
+                frameborder="0" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+            </div>
             
             {props.numVideos > 1 ?
                 <>

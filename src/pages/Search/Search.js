@@ -47,6 +47,8 @@ function Search(props) {
         props.onSearchVideo(props.text);
     }
 
+    console.log(props.lastSearchSuccessful);
+
     return <>
         <ScrollUpOnMount/>
         <div className={classes.SearchSection} style={query.get('word') || props.lastSearchedWord ? {height: '25vh', transition: 'height 0.3s ease'} : null}>
@@ -67,10 +69,8 @@ function Search(props) {
                 <Spinner/>
             </div>
         : 
-            props.lastSearchSuccessful ?
-
+            props.lastSearchSuccessful !== false ?
                 <Result/>
-
             : 
                 <div className={classes.NotFoundBox}>
                     <h2>Hmm, I can't find a video for <span className='accented-text'>{props.lastSearchedWord}</span></h2>
