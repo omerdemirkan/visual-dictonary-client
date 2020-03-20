@@ -13,16 +13,21 @@ const initialState = {
 const searchReducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.UPDATE_SEARCH_TEXT:
+
             return {
                 ...state,
                 text: action.text
             }
+
         case actionTypes.SEARCH_VIDEO_START:
+
             return {
                 ...state,
                 loading: true
             }
+
         case actionTypes.SEARCH_VIDEO_SUCCESS:
+
             return {
                 ...state,
                 loading: false,
@@ -32,7 +37,9 @@ const searchReducer = (state = initialState, action) => {
                 lastSearchedWord: action.word,
                 lastSearchSuccessful: true
             }
+
         case actionTypes.SEARCH_VIDEO_FAILURE:
+
             return {
                 ...state,
                 videos: [],
@@ -40,21 +47,26 @@ const searchReducer = (state = initialState, action) => {
                 lastSearchedWord: action.word,
                 lastSearchSuccessful: false
             }
+
         case actionTypes.INCREMENT_INSPECTED_VIDEO:
-            const incrementedIndex = state.inspectedVideoIndex !== state.videos.length - 1 ? state.inspectedVideoIndex + 1 : 0;
+            
+            const incrementedIndex = state.inspectedVideoIndex < (state.videos.length - 1) ? state.inspectedVideoIndex + 1 : 0;
             return {
                 ...state,
                 inspectedVideoIndex: incrementedIndex,
                 inspectedVideo: state.videos[incrementedIndex]
-                
             }
+
         case actionTypes.DECREMENT_INSPECTED_VIDEO:
+            console.log(action);
+
             const decrementedIndex = state.inspectedVideoIndex !== 0 ? state.inspectedVideoIndex - 1 : state.videos.length - 1;
             return {
                 ...state,
                 inspectedVideoIndex: decrementedIndex,
                 inspectedVideo: state.videos[decrementedIndex]
             }
+
         default:
             return state;
     }

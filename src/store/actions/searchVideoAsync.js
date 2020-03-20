@@ -9,7 +9,6 @@ export default word => {
 
         axios.get('/captions?search=' + word)
         .then(res => {
-            console.log(res.data);
             const videos = res.data.map(video => {
                 return {
                     id: video.videoId,
@@ -32,7 +31,11 @@ export default word => {
             dispatch(searchVideoFailure(word));
         });
 
-        // dispatch(searchVideoSuccess([{id: 'arj7oStGLkU', start: 589, end: 592, sentence: 'and then miraculously find↵the unbelievable work ethic'}], word));
+        // Simulates request, Just so hot reloading doesn't bombard the api
+        // setTimeout(() => {
+        //     dispatch(searchVideoSuccess([{id: 'arj7oStGLkU', start: 589, end: 592, sentence: 'and then miraculously find↵the unbelievable work ethic'}], word));
+        // }, 400);
+        
     }
 }
 

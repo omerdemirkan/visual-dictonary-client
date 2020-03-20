@@ -1,31 +1,8 @@
-.SearchSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60vh;
-    position: relative;
-}
-
-.SearchBox {
-    width: 90%;
-    max-width: 400px;
-}
-
-.SpinnerBox {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    
-    position: absolute;
-    bottom: 50%;
-    left: 0;
-}
-
-.ResultsSection {
+.Result {
     text-align: center;
 }
 
-.ResultsSection h2 {
+.Result h2 {
     opacity: 0;
     top: 10px;
     font-weight: 500;
@@ -34,7 +11,7 @@
     margin-bottom: 30px;
 }
 
-.ResultsSection img {
+.Result img {
     width: 80vw;
     max-width: 400px;
     animation: FadeIn 0.4s ease forwards;
@@ -81,15 +58,4 @@
 .NextVideoButton {
     right: calc(-5vw - 10px);
     
-}
-
-@keyframes FadeIn {
-    from {
-        top: 10px;
-        opacity: 0;
-    }
-    to {
-        top: 0px;
-        opacity: 1;
-    }
 }

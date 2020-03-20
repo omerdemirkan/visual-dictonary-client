@@ -17,6 +17,12 @@ import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actionTypes';
 import searchVideoAsync from '../../store/actions/searchVideoAsync';
 
+//Utils
+import applyAccent from '../../utils/applyAccent';
+
+import Result from './Result/Result';
+import NotFound from './NotFound/NotFound';
+
 function useQuery() {
     return new URLSearchParams(useLocation().search);
 }
@@ -29,8 +35,15 @@ function Search(props) {
     useEffect(() => {
         const searchedWord = query.get('word');
         if (searchedWord) {
+            // If the user loads the app with a word in the url search params (for sharable link)
+
             props.onUpdateText(searchedWord);
             props.onSearchVideo(searchedWord);
+        } else if (props.lastSearchedWord) {
+
+            // If the user comes back to this route with stored information for the last searched word.
+
+            props.history.push(props.history.location.pathname + `?word=${props.lastSearchedWord}`);
         }
     }, []);
 
@@ -40,22 +53,9 @@ function Search(props) {
         props.onSearchVideo(props.text);
     }
 
-    // function navigateVideosHandler(type) {
-    //     switch(type) {
-    //         case 'next':
-
-    //             break;
-    //         case 'previous':
-            
-    //             break;
-    //         default: 
-    //             console.log('error in navigateVideosHandler');
-    //     }
-    // }
-
     return <>
         <ScrollUpOnMount/>
-        <div className={classes.SearchSection} style={query.get('word') ? {height: '25vh', transition: 'height 0.3s ease'} : null}>
+        <div className={classes.SearchSection} style={query.get('word') || props.lastSearchedWord ? {height: '25vh', transition: 'height 0.3s ease'} : null}>
             <div className={classes.SearchBox}>
                 <TextInput
                 label='Search for a word'
@@ -76,7 +76,7 @@ function Search(props) {
 
         {props.lastSearchSuccessful && !props.loading ?
             <div className={classes.ResultsSection}>
-                <h2>Results for <span className='accented-text'>{props.lastSearchedWord}</span></h2>
+                <h2>"{applyAccent(props.video.sentence, props.lastSearchedWord, {color: 'var(--accent)', fontWeight: '700'})}"</h2>
                 <div className={classes.VideoBox}>
 
                     <iframe 
@@ -88,18 +88,30 @@ function Search(props) {
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen></iframe>
 
-                    {}
-                    <span className={classes.PreviousVideoButton} onClick={props.onIncrementVideo}>
-                        <ArrowBackIosRoundedIcon fontSize='large'/>
-                    </span>
+                    {props.numVideos > 1 ?
+                        <>
+                            <span className={classes.PreviousVideoButton} onClick={props.onDecrementVideo}>
+                                <ArrowBackIosRoundedIcon fontSize='large'/>
+                            </span>
 
-                    <span className={classes.NextVideoButton} onClick={props.onDecrementVideo}>
-                        <ArrowForwardIosRoundedIcon fontSize='large'/>
-                    </span>
+                            <span className={classes.NextVideoButton} onClick={props.onIncrementVideo}>
+                                <ArrowForwardIosRoundedIcon fontSize='large'/>
+                            </span>
+                        </>
+                    : null}
+                    
 
                 </div>
                 
             </div>
+
+            // <Result
+            // video={props.video}
+            // lastSearchedWord={props.lastSearchedWord}
+            // numVideos={props.numVideos}
+            // incrementVideo={props.onIncrementVideo}
+            // decrementVideo={props.onDecrementVideo}
+            // />
         : null}
 
         {props.lastSearchSuccessful === false && !props.loading ?
