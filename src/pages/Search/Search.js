@@ -91,7 +91,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onUpdateText: text => dispatch({type: actionTypes.UPDATE_SEARCH_TEXT, text}),
+        onUpdateText: text => dispatch({type: actionTypes.SET_SEARCH_TEXT, text}),
         onSearchVideo: word => dispatch(searchVideoAsync(word))
     }
 }

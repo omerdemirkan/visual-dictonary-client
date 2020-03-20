@@ -15,6 +15,15 @@ import * as actionTypes from '../../../store/actions/actionTypes';
 
 function Result(props) {
 
+    // Creates mappable array for nodes
+    const nodeList = [];
+    for (let i = 0; i < props.numVideos; i++) {
+        nodeList.push({
+            active: i === props.videoIndex,
+            clicked: () => props.onSetVideoIndex(i)
+        });
+    }
+
     return <div className={classes.Result}>
         <h2>"{applyAccent(props.video.sentence, props.word, {color: 'var(--accent)', fontWeight: '700'})}"</h2>
         <div className={classes.VideoBox}>
@@ -30,6 +39,14 @@ function Result(props) {
             
             {props.numVideos > 1 ?
                 <>
+                    <div className={classes.NodeBox}>
+                        {nodeList.map(node => {
+                            return <div 
+                            className={classes.Node} 
+                            style={node.active ? {opacity: '.9'} : null}
+                            onClick={node.clicked}></div>
+                        })}
+                    </div>
                     <span className={classes.PreviousVideoButton} onClick={props.onDecrementVideo}>
                         <ArrowBackIosRoundedIcon fontSize='large'/>
                     </span>
@@ -40,7 +57,6 @@ function Result(props) {
                 </>
             : null}
             
-
         </div>
     </div>
 }
@@ -49,7 +65,7 @@ const mapStateToProps = state => {
     return {
         video: state.search.inspectedVideo,
         numVideos: state.search.videos.length,
-        videoIndex: state.search.videos.inspectedVideoIndex,
+        videoIndex: state.search.inspectedVideoIndex,
         word: state.search.lastSearchedWord
     }
 }
@@ -57,7 +73,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onIncrementVideo: () => dispatch({type: actionTypes.INCREMENT_INSPECTED_VIDEO}),
-        onDecrementVideo: () => dispatch({type: actionTypes.DECREMENT_INSPECTED_VIDEO})
+        onDecrementVideo: () => dispatch({type: actionTypes.DECREMENT_INSPECTED_VIDEO}),
+        onSetVideoIndex: index => dispatch({type: actionTypes.SET_INSPECTED_VIDEO_INDEX, index})
     }
 }
 

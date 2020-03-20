@@ -12,7 +12,7 @@ const initialState = {
 
 const searchReducer = (state = initialState, action) => {
     switch(action.type) {
-        case actionTypes.UPDATE_SEARCH_TEXT:
+        case actionTypes.SET_SEARCH_TEXT:
 
             return {
                 ...state,
@@ -65,6 +65,12 @@ const searchReducer = (state = initialState, action) => {
                 ...state,
                 inspectedVideoIndex: decrementedIndex,
                 inspectedVideo: state.videos[decrementedIndex]
+            }
+        case actionTypes.SET_INSPECTED_VIDEO_INDEX:
+            return {
+                ...state,
+                inspectedVideoIndex: action.index,
+                inspectedVideo: state.videos[action.index]
             }
 
         default:
