@@ -21,11 +21,11 @@
     left: 0;
 }
 
-.ResultsSection {
+.NotFoundBox {
     text-align: center;
 }
 
-.ResultsSection h2 {
+.NotFoundBox h2 {
     opacity: 0;
     top: 10px;
     font-weight: 500;
@@ -34,7 +34,7 @@
     margin-bottom: 30px;
 }
 
-.ResultsSection img {
+.NotFoundBox img {
     width: 80vw;
     max-width: 400px;
     animation: FadeIn 0.4s ease forwards;
@@ -42,45 +42,6 @@
     opacity: 0;
     position: relative;
     top: 10px;
-}
-
-.VideoBox {
-    width: 80vw;
-    height: 45vw;
-    max-width: 800px;
-    max-height: 450px;
-    margin: auto;
-    position: relative;
-}
-
-.VideoBox iframe {
-    position: relative;
-    opacity: 0;
-    top: 10px;
-    animation: FadeIn 0.4s ease forwards;
-    animation-delay: .6s;
-}
-
-.VideoBox span {
-    cursor: pointer;
-    color: var(--secondary);
-    transition: color 0.1s ease;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.VideoBox span:hover {
-    color: var(--primary);
-}
-
-.PreviousVideoButton {
-    left: calc(-5vw - 10px);
-}
-
-.NextVideoButton {
-    right: calc(-5vw - 10px);
-    
 }
 
 @keyframes FadeIn {

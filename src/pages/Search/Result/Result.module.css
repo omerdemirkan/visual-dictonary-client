@@ -59,3 +59,14 @@
     right: calc(-5vw - 10px);
     
 }
+
+@keyframes FadeIn {
+    from {
+        top: 10px;
+        opacity: 0;
+    }
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}

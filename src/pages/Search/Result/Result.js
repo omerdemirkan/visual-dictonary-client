@@ -8,11 +8,15 @@ import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounde
 //Utils
 import applyAccent from '../../../utils/applyAccent';
 
+// Redux
+import { connect } from 'react-redux';
+import * as actionTypes from '../../../store/actions/actionTypes';
 
-export default function Result(props) {
+
+function Result(props) {
 
     return <div className={classes.Result}>
-        <h2>"{applyAccent(props.video.sentence, props.lastSearchedWord, {color: 'var(--accent)', fontWeight: '700'})}"</h2>
+        <h2>"{applyAccent(props.video.sentence, props.word, {color: 'var(--accent)', fontWeight: '700'})}"</h2>
         <div className={classes.VideoBox}>
 
             <iframe 
@@ -23,14 +27,14 @@ export default function Result(props) {
             frameborder="0" 
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen></iframe>
-
+            
             {props.numVideos > 1 ?
                 <>
-                    <span className={classes.PreviousVideoButton} onClick={props.decrementVideo}>
+                    <span className={classes.PreviousVideoButton} onClick={props.onDecrementVideo}>
                         <ArrowBackIosRoundedIcon fontSize='large'/>
                     </span>
 
-                    <span className={classes.NextVideoButton} onClick={props.incrementVideo}>
+                    <span className={classes.NextVideoButton} onClick={props.onIncrementVideo}>
                         <ArrowForwardIosRoundedIcon fontSize='large'/>
                     </span>
                 </>
@@ -40,3 +44,21 @@ export default function Result(props) {
         </div>
     </div>
 }
+
+const mapStateToProps = state => {
+    return {
+        video: state.search.inspectedVideo,
+        numVideos: state.search.videos.length,
+        videoIndex: state.search.videos.inspectedVideoIndex,
+        word: state.search.lastSearchedWord
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onIncrementVideo: () => dispatch({type: actionTypes.INCREMENT_INSPECTED_VIDEO}),
+        onDecrementVideo: () => dispatch({type: actionTypes.DECREMENT_INSPECTED_VIDEO})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Result);
