@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 
 // Styling
 import classes from './Search.module.css';
@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 // UI
 import TextInput from '../../components/UI/TextField/TextInput';
-import Select from '../../components/UI/Select/Select';
+// import Select from '../../components/UI/Select/Select';
 import ScrollUpOnMount from '../../components/ScrollUpOnMount/SrollUpOnMount';
 
 // Redux
@@ -24,8 +24,6 @@ function useQuery() {
 }
 
 function Search(props) {
-
-    const [number, setNumber] = useState('None');
     
     // To read url search params
     const query = useQuery();
@@ -51,6 +49,12 @@ function Search(props) {
         props.onSearchVideo(props.text);
     }
 
+    function enterPressedHandler(key) {
+        if (key === 'Enter') {
+            submitButtonClickedHandler();
+        }
+    }
+
     return <>
         <ScrollUpOnMount/>
         <div className={classes.SearchSection} style={query.get('word') || props.lastSearchedWord ? {height: '25vh', transition: 'height 0.3s ease'} : null}>
@@ -73,6 +77,7 @@ function Search(props) {
                 variant='filled'
                 value={props.text}
                 onChange={props.onSetText}
+                onKeyPress={enterPressedHandler}
                 onSubmit={submitButtonClickedHandler}
                 disableSubmit={props.text.length === 0 || props.loading}
                 />
