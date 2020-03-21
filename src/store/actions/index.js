@@ -15,5 +15,5 @@ export function incrementInspectedVideo(oldIndex, numVideos) {
 }
 
 export function decrementInspectedVideo(oldIndex, numVideos) {
-    return setInspectedVideoIndex(oldIndex > 0 ? oldIndex - 1 : (numVideos - 1))
+    return setInspectedVideoIndex(oldIndex > 0 ? oldIndex - 1 : numVideos - 1)
 }
