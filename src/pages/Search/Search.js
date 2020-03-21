@@ -110,7 +110,7 @@ function Search(props) {
           incrementVideoIndex={() =>
             props.onIncrementVideo(props.videoIndex, props.numVideos)
           }
-          decrementInspectedVideo={() =>
+          decrementVideoIndex={() =>
             props.onDecrementVideo(props.videoIndex, props.numVideos)
           }
         />

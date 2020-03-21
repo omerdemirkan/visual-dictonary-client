@@ -35,7 +35,7 @@ function Result(props) {
       </div>
     );
   }
-
+  
   return (
     <div className={classes.Result}>
       <div className={classes.VideoBox}>
