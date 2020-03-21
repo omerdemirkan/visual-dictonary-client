@@ -9,10 +9,6 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 //Utils
 import applyAccent from '../../../utils/applyAccent';
 
-// Redux
-import { connect } from 'react-redux';
-import * as actionTypes from '../../../store/actions/actionTypes';
-
 
 function Result(props) {
 
@@ -29,16 +25,8 @@ function Result(props) {
     for (let i = 0; i < props.numVideos; i++) {
         nodeList.push({
             active: i === props.videoIndex,
-            clicked: () => props.onSetVideoIndex(i)
+            clicked: () => props.setVideoIndex(i)
         });
-    }
-
-    function incrementVideo() {
-        props.onSetVideoIndex(props.videoIndex < (props.numVideos - 1) ? props.videoIndex + 1 : 0)
-    }
-
-    function decrementVideo() {
-        props.onSetVideoIndex(props.videoIndex > 0 ? props.videoIndex - 1 : (props.numVideos - 1))
     }
 
     return <div className={classes.Result}>
@@ -66,11 +54,11 @@ function Result(props) {
                             onClick={node.clicked}></div>
                         })}
                     </div>
-                    <span className={classes.PreviousVideoButton} onClick={decrementVideo}>
+                    <span className={classes.PreviousVideoButton} onClick={props.decrementVideoIndex}>
                         <ArrowBackIosRoundedIcon fontSize='large'/>
                     </span>
 
-                    <span className={classes.NextVideoButton} onClick={incrementVideo}>
+                    <span className={classes.NextVideoButton} onClick={props.incrementVideoIndex}>
                         <ArrowForwardIosRoundedIcon fontSize='large'/>
                     </span>
                 </>
@@ -80,18 +68,4 @@ function Result(props) {
     </div>
 }
 
-const mapStateToProps = state => {
-    return {
-        video: state.search.inspectedVideo,
-        numVideos: state.search.videos.length,
-        videoIndex: state.search.inspectedVideoIndex
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onSetVideoIndex: index => dispatch({type: actionTypes.SET_INSPECTED_VIDEO_INDEX, index})
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Result);
+export default Result;

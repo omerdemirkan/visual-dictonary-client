@@ -6,16 +6,15 @@ import { useLocation } from 'react-router-dom';
 
 // UI
 import TextInput from '../../components/UI/TextField/TextInput';
-import Spinner from '../../components/UI/Spinner/Spinner';
 import ScrollUpOnMount from '../../components/ScrollUpOnMount/SrollUpOnMount';
-import lost from '../../images/lost.svg';
 
 // Redux
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions/actionTypes';
-import searchVideoAsync from '../../store/actions/searchVideoAsync';
+import {searchVideoAsync, setSearchText, setInspectedVideoIndex, incrementInspectedVideo, decrementInspectedVideo} from '../../store/actions/index';
 
+// Components
 import Result from './Result/Result';
+import NotFound from './NotFound/NotFound';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -31,7 +30,7 @@ function Search(props) {
         if (searchedWord) {
             // If the user loads the app with a word in the url search params (for sharable link)
 
-            props.onUpdateText(searchedWord);
+            props.onSetText(searchedWord);
             props.onSearchVideo(searchedWord);
         } else if (props.lastSearchedWord) {
 
@@ -47,8 +46,6 @@ function Search(props) {
         props.onSearchVideo(props.text);
     }
 
-    console.log(props.lastSearchSuccessful);
-
     return <>
         <ScrollUpOnMount/>
         <div className={classes.SearchSection} style={query.get('word') || props.lastSearchedWord ? {height: '25vh', transition: 'height 0.3s ease'} : null}>
@@ -57,7 +54,7 @@ function Search(props) {
                 label='Search for a word'
                 variant='filled'
                 value={props.text}
-                onChange={props.onUpdateText}
+                onChange={props.onSetText}
                 onSubmit={submitButtonClickedHandler}
                 disableSubmit={props.text.length === 0 || props.loading}
                 />
@@ -65,14 +62,17 @@ function Search(props) {
         </div>
 
         {props.lastSearchSuccessful === false ?
-            <div className={classes.NotFoundBox}>
-                <h2>Hmm, I can't find a video for <span className='accented-text'>{props.lastSearchedWord}</span></h2>
-                <img src={lost} alt='lost'/>
-            </div>
+            <NotFound lastSearchedWord={props.lastSearchedWord}/>
         :
             <Result
             loading={props.loading}
-            word={props.lastSearchedWord}/>
+            word={props.lastSearchedWord}
+            video={props.video}
+            numVideos={props.numVideos}
+            videoIndex={props.videoIndex}
+            setVideoIndex={props.onSetVideoIndex}
+            incrementVideoIndex={() => props.onIncrementVideo(props.videoIndex, props.numVideos)}
+            decrementInspectedVideo={() => props.onDecrementVideo(props.videoIndex, props.numVideos)}/>
         }
     </>
 }
@@ -82,14 +82,20 @@ const mapStateToProps = state => {
         text: state.search.text,
         loading: state.search.loading,
         lastSearchedWord: state.search.lastSearchedWord,
-        lastSearchSuccessful: state.search.lastSearchSuccessful
+        lastSearchSuccessful: state.search.lastSearchSuccessful,
+        video: state.search.inspectedVideo,
+        numVideos: state.search.videos.length,
+        videoIndex: state.search.inspectedVideoIndex
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onUpdateText: text => dispatch({type: actionTypes.SET_SEARCH_TEXT, text}),
-        onSearchVideo: word => dispatch(searchVideoAsync(word))
+        onSetText: text => dispatch(setSearchText(text)),
+        onSearchVideo: word => dispatch(searchVideoAsync(word)),
+        onSetVideoIndex: index => dispatch(setInspectedVideoIndex(index)),
+        onIncrementVideo: (index, numVideos) => dispatch(incrementInspectedVideo(index, numVideos)),
+        onDecrementVideo: (index, numVideos) => dispatch(decrementInspectedVideo(index, numVideos))
     }
 }
 
