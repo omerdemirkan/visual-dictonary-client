@@ -1,8 +1,8 @@
 .SearchSection {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 60vh;
+    align-items: flex-end;
+    height: 40vh;
     position: relative;
 }
 

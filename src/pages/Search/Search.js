@@ -68,22 +68,22 @@ function Search(props) {
         className={classes.SearchSection}
         style={
           query.get('word') || props.lastSearchedWord
-            ? { height: '25vh', transition: 'height 0.3s ease' }
+            ? { height: '18vh', transition: 'height 0.3s ease' }
             : null
         }
       >
         <div className={classes.SearchBox}>
           {/* <Select
-                label='First Language (Optional)'
-                onChange={setNumber}
-                value={number}
-                options={[
-                    {value: null, display: 'None'},
-                    {value: 'fr', display: 'French'},
-                    {value: 'sp', display: 'Spanish'},
-                    {value: 'ge', display: 'German'},
-                    {value: 'tr', display: 'Turkish'}
-                ]}/> */}
+          label='First Language (Optional)'
+          // onChange={setNumber}
+          // value={number}
+          options={[
+              {value: null, display: 'None'},
+              {value: 'fr', display: 'French'},
+              {value: 'sp', display: 'Spanish'},
+              {value: 'ge', display: 'German'},
+              {value: 'tr', display: 'Turkish'}
+          ]}/> */}
 
           <TextInput
             label='Search for a word'
