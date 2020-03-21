@@ -1,4 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+
+// Styling
 import classes from './Search.module.css';
 
 //Routing
@@ -6,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 // UI
 import TextInput from '../../components/UI/TextField/TextInput';
+import Select from '../../components/UI/Select/Select';
 import ScrollUpOnMount from '../../components/ScrollUpOnMount/SrollUpOnMount';
 
 // Redux
@@ -21,6 +24,8 @@ function useQuery() {
 }
 
 function Search(props) {
+
+    const [number, setNumber] = useState('None');
     
     // To read url search params
     const query = useQuery();
@@ -50,6 +55,19 @@ function Search(props) {
         <ScrollUpOnMount/>
         <div className={classes.SearchSection} style={query.get('word') || props.lastSearchedWord ? {height: '25vh', transition: 'height 0.3s ease'} : null}>
             <div className={classes.SearchBox}>
+
+                {/* <Select
+                label='First Language (Optional)'
+                onChange={setNumber}
+                value={number}
+                options={[
+                    {value: null, display: 'None'},
+                    {value: 'fr', display: 'French'},
+                    {value: 'sp', display: 'Spanish'},
+                    {value: 'ge', display: 'German'},
+                    {value: 'tr', display: 'Turkish'}
+                ]}/> */}
+
                 <TextInput
                 label='Search for a word'
                 variant='filled'
