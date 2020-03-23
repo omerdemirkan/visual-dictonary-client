@@ -25,9 +25,7 @@ import {
 import Result from './Result/Result';
 import NotFound from './NotFound/NotFound';
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+const useQuery = () => new URLSearchParams(useLocation().search);
 
 function Search(props) {
   // To read url search params

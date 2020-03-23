@@ -40,12 +40,7 @@ function Result(props) {
     <div className={classes.Result}>
       <div className={classes.VideoBox}>
         <div
-          style={{
-            boxShadow: '0px 10px 30px #00000050',
-            borderRadius: '10px',
-            overflow: 'hidden',
-            height: '100%'
-          }}
+        className={classes.VideoWrapper}
         >
           <iframe
             title='main'
