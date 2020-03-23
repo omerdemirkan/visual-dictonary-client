@@ -10,6 +10,7 @@ import Footer from './components/Footer/Footer';
 //pages
 import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
+import Contribute from './pages/Contribute/Contribute';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     <div className='main'>
       <Switch>
         <Route path='/search' component={Search}/>
+        <Route path='/contribute' component={Contribute}/>
         <Route path='/' component={Home}/>
       </Switch>
     </div>

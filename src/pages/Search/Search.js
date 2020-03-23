@@ -7,7 +7,7 @@ import classes from './Search.module.css';
 import { useLocation } from 'react-router-dom';
 
 // UI
-import TextInput from '../../components/UI/TextField/TextInput';
+import TextInput from '../../components/UI/TextInput/TextInput';
 // import Select from '../../components/UI/Select/Select';
 import ScrollUpOnMount from '../../components/ScrollUpOnMount/SrollUpOnMount';
 
@@ -93,6 +93,7 @@ function Search(props) {
             onKeyPress={enterPressedHandler}
             onSubmit={submitButtonClickedHandler}
             disableSubmit={props.text.length === 0 || props.loading}
+            autoFocus={true}
           />
         </div>
       </div>

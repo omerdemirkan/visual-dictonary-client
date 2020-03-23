@@ -6,16 +6,15 @@ import SearchIcon from '@material-ui/icons/Search';
 import Input from '@material-ui/core/Input';
 import ThemeProvider from '../ThemeProvider/ThemeProvider';
 
-export default function TextInput({label, value, onChange, onSubmit, disableSubmit, onKeyPress}) {
+export default function TextInput({label, value, onChange, onSubmit, disableSubmit, onKeyPress, autoFocus}) {
     return <ThemeProvider>
         <div className={classes.TextInput}>
             <Input 
             className={classes.Input} 
-            label={label}
             value={value}
-            onChange={e => onChange(e.target.value)}
-            onKeyPress={e => onKeyPress(e.key)}
-            autoFocus={true}
+            onChange={onChange ? e => onChange(e.target.value) : null}
+            onKeyPress={onKeyPress ? e => onKeyPress(e.key) : null}
+            autoFocus={autoFocus}
             />
             <h3>{label}</h3>
             {onSubmit ? 

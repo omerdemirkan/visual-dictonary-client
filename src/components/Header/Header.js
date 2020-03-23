@@ -49,8 +49,8 @@ export default function Header() {
             </li>
 
             <li>
-                <NavLink to='/about' activeClassName={classes.ActiveLink}>
-                    about
+                <NavLink to='/contribute' activeClassName={classes.ActiveLink}>
+                    contribute
                     <span></span>
                     
                 </NavLink>

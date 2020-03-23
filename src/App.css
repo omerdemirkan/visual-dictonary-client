@@ -51,6 +51,17 @@ a {
 
 
 
+.form-box {
+  width: 90vw;
+  max-width: 400px;
+  margin: auto;
+}
+
+.page-header {
+  text-align: center;
+  margin: 10vh 0;
+}
+
 .main {
   min-height: calc(100vh - 60px);
 }
@@ -95,4 +106,8 @@ a {
 button.large {
   padding: 12px 40px;
   font-size: 1.1rem;
+}
+
+button.full-width {
+  width: 100%;
 }
