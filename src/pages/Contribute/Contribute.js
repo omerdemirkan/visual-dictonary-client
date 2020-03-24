@@ -3,20 +3,20 @@ import classes from './Contribute.module.css';
 
 // UI
 import TextInput from '../../components/UI/TextInput/TextInput'
-import axios from '../../axios'
+// import axios from '../../axios'
 
 export default function Contribute() {
 
     const [youtubeLink, setYoutubeLink] = useState('');
 
     function addVideo() {
-        axios.get('/captions/add-video?videoId=' + youtubeLink)
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        // axios.get('/captions/add-video?videoId=' + youtubeLink)
+        // .then(res => {
+        //     console.log(res);
+        // })
+        // .catch(err => {
+        //     console.log(err);
+        // })
     }
 
     function updateVideoLinkHandler(text) {

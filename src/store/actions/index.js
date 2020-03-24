@@ -17,3 +17,11 @@ export function incrementInspectedVideo(oldIndex, numVideos) {
 export function decrementInspectedVideo(oldIndex, numVideos) {
     return setInspectedVideoIndex(oldIndex > 0 ? oldIndex - 1 : numVideos - 1)
 }
+
+export function openSnackbar(message) {
+    return {type: actionTypes.OPEN_SNACKBAR, message}
+}
+
+export function closeSnackbar(message) {
+    return {type: actionTypes.OPEN_SNACKBAR}
+}
