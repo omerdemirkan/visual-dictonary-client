@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
 import Contribute from './pages/Contribute/Contribute';
+import Notifications from './containers/Notifications/Notifications';
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
       </Switch>
     </div>
     <Footer/>
+
+    <Notifications/>
   </div>
 }
 

@@ -22,6 +22,6 @@ export function openSnackbar(message) {
     return {type: actionTypes.OPEN_SNACKBAR, message}
 }
 
-export function closeSnackbar(message) {
-    return {type: actionTypes.OPEN_SNACKBAR}
+export function closeSnackbar() {
+    return {type: actionTypes.CLOSE_SNACKBAR}
 }

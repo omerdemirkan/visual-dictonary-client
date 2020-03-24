@@ -3,9 +3,14 @@ import classes from './Contribute.module.css';
 
 // UI
 import TextInput from '../../components/UI/TextInput/TextInput'
+
+// Redux
+import { openSnackbar } from '../../store/actions/index';
+import { connect } from 'react-redux';
+
 // import axios from '../../axios'
 
-export default function Contribute() {
+function Contribute(props) {
 
     const [youtubeLink, setYoutubeLink] = useState('');
 
@@ -17,6 +22,7 @@ export default function Contribute() {
         // .catch(err => {
         //     console.log(err);
         // })
+        props.onOpenSnackbar('Functionality Not Available Yet')
     }
 
     function updateVideoLinkHandler(text) {
@@ -44,3 +50,11 @@ export default function Contribute() {
         </div>
     </div>
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onOpenSnackbar: message => dispatch(openSnackbar(message))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Contribute);
