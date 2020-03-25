@@ -2,32 +2,39 @@ import React, { useState } from 'react';
 import classes from './Contribute.module.css';
 
 // UI
-import TextInput from '../../components/UI/TextInput/TextInput'
+import TextInput from '../../components/UI/TextInput/TextInput';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 // Redux
 import { openSnackbar } from '../../store/actions/index';
 import { connect } from 'react-redux';
 
-// import axios from '../../axios'
+import axios from '../../axios'
 
 function Contribute(props) {
 
-    const [youtubeLink, setYoutubeLink] = useState('');
+    const [videoId, setVideoId] = useState('');
+    const [loading, setloading] = useState(false);
 
     function addVideo() {
-        // axios.get('/captions/add-video?videoId=' + youtubeLink)
-        // .then(res => {
-        //     console.log(res);
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // })
-        props.onOpenSnackbar('Functionality Not Available Yet')
+
+        setloading(true);
+
+        axios.get('/captions/add-video?videoIds=' + videoId)
+        .then(res => {
+            setloading(false);
+            props.onOpenSnackbar('Video successfully added!');
+        })
+        .catch(err => {
+            setloading(false);
+            console.log(err.message);
+            props.onOpenSnackbar(err.message)
+        })
     }
 
     function updateVideoLinkHandler(text) {
         if (text.match('^[a-zA-Z0-9_]+$') || text === '') {
-            setYoutubeLink(text)
+            setVideoId(text)
         }
     }
 
@@ -40,14 +47,20 @@ function Contribute(props) {
             label='Youtube Video ID'
             onChange={updateVideoLinkHandler}
             autoFocus
-            value={youtubeLink}/>
+            value={videoId}/>
 
             <button 
             className='primary-button large full-width' 
             onClick={addVideo}
-            disabled={youtubeLink.length < 8}
+            disabled={videoId.length < 8}
             >Submit</button>
         </div>
+
+        {loading ?
+            <div className={classes.SpinnerBox}>
+                <Spinner/>
+            </div>
+        : null}
     </div>
 }
 
