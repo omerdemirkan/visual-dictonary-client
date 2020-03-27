@@ -34,6 +34,7 @@ textarea:focus, input:focus {
 
 * {
   outline: none;
+  /* text-transform: lowercase; */
 }
 
 button {
@@ -110,4 +111,5 @@ button.large {
 
 button.full-width {
   width: 100%;
+  margin: 15px 0;
 }
