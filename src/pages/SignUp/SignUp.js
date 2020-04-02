@@ -17,6 +17,10 @@ export default function SignUp() {
         setPassword(text)
     }
 
+    function signUpButtonClickesHandler() {
+
+    }
+
     return <div className={classes.SignUp}>
         <h1 className='page-header'>Sign Up</h1>
         <div className='form-box'>
