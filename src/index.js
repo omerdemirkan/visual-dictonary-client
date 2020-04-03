@@ -14,10 +14,12 @@ import thunk from 'redux-thunk';
 
 import searchReducer from './store/reducers/search';
 import notificationReducer from './store/reducers/notification';
+import authReducer from './store/reducers/auth';
 
 const rootReducer = combineReducers({
     search: searchReducer,
-    notification: notificationReducer
+    notification: notificationReducer,
+    auth: authReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

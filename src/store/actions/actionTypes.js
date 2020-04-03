@@ -9,3 +9,8 @@ export const SET_INSPECTED_VIDEO_INDEX = 'SET_INSPECTED_VIDEO_INDEX';
 // Notification
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
+
+// Auth
+export const AUTH_START = 'AUTH_START';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAILURE = 'AUTH_FAILURE';

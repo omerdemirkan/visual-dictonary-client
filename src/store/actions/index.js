@@ -25,3 +25,15 @@ export function openSnackbar(message) {
 export function closeSnackbar() {
     return {type: actionTypes.CLOSE_SNACKBAR}
 }
+
+export function authStart() {
+    return {type: actionTypes.AUTH_START}
+}
+
+export function authSuccess(accessToken) {
+    return {type: actionTypes.AUTH_SUCCESS, accessToken}
+}
+
+export function authFailure() {
+    return {type: actionTypes.AUTH_FAILURE}
+}
