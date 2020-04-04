@@ -27,6 +27,11 @@
     font-family: 'Muli', sans-serif !important;
 }
 
+.Input + h3 {
+    color: var(--primary);
+    /* bottom: 1px; */
+}
+
 .Input:focus-within + h3 {
     color: var(--accent);
     /* bottom: 1px; */
@@ -42,9 +47,10 @@
     align-items: center;
     justify-content: center;
 
-    background-color: var(--background);
+    background-color: transparent;
     color: var(--secondary);
-    border: 2px solid var(--secondary);
+    /* border: 2px solid var(--secondary); */
+    border: none;
     border-radius: 2px;
 
     transition: border-color 0.2s ease, color 0.2s ease;

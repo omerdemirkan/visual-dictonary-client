@@ -1,14 +1,22 @@
 import axios from "../axios";
 
 export async function signUp(username, password) {
-  const res = await axios.post("/auth/sign-up", {
+  axios.post("/auth/sign-up", {
     username,
     password
+  })
+  .then(res => {
+    console.log(res);
+  })
+  .catch(err => {
+    console.error(err)
   });
 
-  console.log(res.data);
+  return null;
 
-  return res.data.token || null;
+  // console.log(res.data);
+
+  // return res.data.token || null;
 }
 
 export async function logIn(username, password) {
@@ -23,11 +31,9 @@ export async function logIn(username, password) {
 }
 
 export async function verifyToken(accessToken) {
-  const res = await axios.post("/auth/sign-up", {
+  const res = await axios.post("/auth/verify", {
     accessToken
   });
-
-  console.log(res.data);
 
   return res.data.token || null;
 }

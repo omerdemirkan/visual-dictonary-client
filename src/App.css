@@ -76,6 +76,10 @@ a {
   color: var(--background);
 }
 
+.spinner-box {
+  text-align: center;
+}
+
 .primary-button {
   border: none;
   background-color: var(--accent);

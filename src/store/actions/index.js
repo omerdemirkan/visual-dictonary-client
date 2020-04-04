@@ -2,6 +2,12 @@ import * as actionTypes from './actionTypes';
 
 export {default as searchVideoAsync} from './searchVideoAsync';
 
+export {
+    signUpAsync,
+    logInAsync,
+    verifyTokenAsync
+} from './authAsync';
+
 export function setSearchText(text) {
     return {type: actionTypes.SET_SEARCH_TEXT, text}
 };
@@ -24,16 +30,4 @@ export function openSnackbar(message) {
 
 export function closeSnackbar() {
     return {type: actionTypes.CLOSE_SNACKBAR}
-}
-
-export function authStart() {
-    return {type: actionTypes.AUTH_START}
-}
-
-export function authSuccess(accessToken) {
-    return {type: actionTypes.AUTH_SUCCESS, accessToken}
-}
-
-export function authFailure() {
-    return {type: actionTypes.AUTH_FAILURE}
 }
