@@ -7,7 +7,7 @@ import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounde
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
 //Utils
-import applyAccent from '../../../utils/applyAccent';
+import {applyAccent} from '../../../utils/helpers';
 
 function Result(props) {
   if (props.loading === true) {
