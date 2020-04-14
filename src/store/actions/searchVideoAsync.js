@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 // import stringToSeconds from '../../utils/stringToSeconds';
-import decodeHtml from '../../utils/decodeHtml';
+import {decodeHtml} from '../../utils/helpers';
 
 import axios from '../../axios';
 
@@ -10,12 +10,13 @@ export default word => {
 
         axios.get('/captions?search=' + word)
         .then(res => {
+            console.log(res.data);
             const videos = res.data.map(video => {
                 return {
                     id: video.videoId,
                     start: Math.floor(video.start),
                     end: Math.ceil(video.start + video.duration),
-                    sentence: decodeHtml(video.captions)
+                    sentence: decodeHtml(video.caption)
                 }
             });
 
