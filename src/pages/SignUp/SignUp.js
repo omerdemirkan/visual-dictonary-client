@@ -30,7 +30,7 @@ function SignUp(props) {
     } else if (signUpAttempted && !props.loading && props.accessToken) {
       props.onOpenSnackbar(`You're signed in!`);
     }
-  }, [props.loading]);
+  }, [props.authLoading]);
 
   function formUpdateHandler(type, text) {
     switch (type) {
