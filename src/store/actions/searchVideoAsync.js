@@ -1,6 +1,9 @@
 import * as actionTypes from './actionTypes';
 // import stringToSeconds from '../../utils/stringToSeconds';
-import {decodeHtml} from '../../utils/helpers';
+import {
+    decodeHtml,
+    shuffleArray
+} from '../../utils/helpers';
 
 import axios from '../../axios';
 
@@ -21,6 +24,8 @@ export default word => {
             });
 
             console.log(videos);
+
+            shuffleArray(videos)
 
             if (videos.length > 0) {
                 dispatch(searchVideoSuccess(videos, word));
